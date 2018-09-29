@@ -1,5 +1,4 @@
 # zcrypt
---
 
 # What
 This is golang CLI tool which can encrypt and decrypt with aes-256-cbc.
