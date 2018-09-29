@@ -2,7 +2,7 @@ package main
 
 import (
 	"os"
-	"github.com/IkezoeMakoto/etc-trial/golang/app/service/zcrypt"
+	"github.com/IkezoeMakoto/zcrypt/zcrypt"
 )
 
 func main() {
