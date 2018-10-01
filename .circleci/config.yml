@@ -7,3 +7,23 @@ jobs:
     steps:
     - checkout
     - run: make main
+
+  deploy:
+    docker:
+    - image: circleci/golang:1.9
+    working_directory: /go/src/github.com/IkezoeMakoto/zcrypt
+    steps:
+    - checkout
+    - run: make deploy
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+    - build
+    - deploy:
+        requires:
+        - test
+        filters:
+          branches:
+            only: master
