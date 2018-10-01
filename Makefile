@@ -1,10 +1,12 @@
-.PHONY: deploy clean
+.PHONY: deploy clean get/tag
 
-TAG=
+get/tag:
+	$(eval TAG := $(shell ./get_tag.sh))
+
 $(TAG):
 	mkdir -p tags/$(TAG)
 
-deploy: $(TAG) $(GOPATH)/bin/gox $(GOPATH)/bin/ghr
+deploy: get/tag $(TAG) $(GOPATH)/bin/gox $(GOPATH)/bin/ghr
 	gox -output "tags/$(TAG)/{{.Dir}}_{{.OS}}_{{.Arch}}"
 	ghr $(TAG) tags/$(TAG)
 
