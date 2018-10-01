@@ -1,5 +1,7 @@
 # zcrypt
 
+[![CircleCI](https://circleci.com/gh/IkezoeMakoto/zcrypt.svg?style=svg)](https://circleci.com/gh/IkezoeMakoto/zcrypt)
+
 # What
 This is golang CLI tool which can encrypt and decrypt with aes-256-cbc.
 You can get the encrypted file by specifying the file you want to encrypt and the encryption key.
