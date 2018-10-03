@@ -21,3 +21,8 @@ $(GOPATH)/bin/ghr:
 
 main:
 	go build -o main
+
+test: main
+	./main enc -in ./tests/plain.txt -out ./tests/plain.txt.encrypted -key ./tests/key
+	./main dec -in ./tests/plain.txt.encrypted -out ./tests/plain.txt.decrypted -key ./tests/key
+	diff -q ./tests/plain.txt ./tests/plain.txt.decrypted
