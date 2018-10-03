@@ -23,6 +23,6 @@ main:
 	go build -o main
 
 test: main
-	./main enc -in ./tests/plain.txt -out ./tests/plain.txt.encrypted -key ./tests/key
-	./main dec -in ./tests/plain.txt.encrypted -out ./tests/plain.txt.decrypted -key ./tests/key
+	./main enc -in ./tests/plain.txt -key ./tests/key > ./tests/plain.txt.encrypted
+	./main dec -in ./tests/plain.txt.encrypted -key ./tests/key > ./tests/plain.txt.decrypted
 	diff -q ./tests/plain.txt ./tests/plain.txt.decrypted
