@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-const Version string = "v0.1.0"
+const Version string = "v0.1.1"
 
 const (
 	ExitCodeOK = 0
@@ -26,7 +26,6 @@ func (cli *CLI) Run(args []string) int {
 		enc     bool
 		dec     bool
 		in      string
-		out     string
 		key     string
 		version bool
 	)
@@ -37,7 +36,6 @@ func (cli *CLI) Run(args []string) int {
 	flags.BoolVar(&enc, "enc", false, "Encrypt")
 	flags.BoolVar(&dec, "dec", false, "Decrypt")
 	flags.StringVar(&in, "in", "", "Input file path")
-	flags.StringVar(&out, "out", "", "Output file path")
 	flags.StringVar(&key, "key", "", "Encryption key string")
 	flags.BoolVar(&version, "version", false, "Print version")
 	flags.BoolVar(&version, "v", false, "Print version")
@@ -78,8 +76,7 @@ func (cli *CLI) Run(args []string) int {
 	result, err := Zcrypt.Exec(input)
 	cli.chkErr(err)
 
-	err = ioutil.WriteFile(out, result, 0644)
-	cli.chkErr(err)
+	fmt.Print(string(result))
 
 	return ExitCodeOK
 }
@@ -95,4 +92,4 @@ func (cli *CLI) printHelp() {
 	fmt.Fprintln(cli.ErrStream, usage)
 }
 
-var usage = `Usage: zcrypt (enc|dec) -in input_path -out output_path -key encrypt_key_path`
+var usage = `Usage: zcrypt (enc|dec) -in input_path -key encrypt_key_path`
