@@ -11,6 +11,10 @@ You can get the encrypted file by specifying the file you want to encrypt and th
 ```
 $ go get -u github.com/IkezoeMakoto/zcrypt
 ```
+or
+```
+wget https://github.com/IkezoeMakoto/zcrypt/releases/download/v1.0.5/zcrypt_darwin_amd64
+```
 
 # Usage
 ```
